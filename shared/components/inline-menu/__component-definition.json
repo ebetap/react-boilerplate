@@ -1,0 +1,1 @@
+{"description":"","displayName":"InlineMenu","methods":[],"props":{"children":{"type":{"name":"array"},"required":false,"description":""},"className":{"type":{"name":"string"},"required":false,"description":""},"classes":{"type":{"name":"shape","value":{"root":{"name":"string","required":false},"list":{"name":"string","required":false}}},"required":false,"description":""}}}

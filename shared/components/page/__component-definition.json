@@ -1,0 +1,1 @@
+{"description":"","displayName":"Page","methods":[],"props":{"classes":{"type":{"name":"shape","value":{"root":{"name":"string","required":false}}},"required":false,"description":""},"className":{"type":{"name":"string"},"required":false,"description":""},"children":{"type":{"name":"node"},"required":false,"description":""}}}
