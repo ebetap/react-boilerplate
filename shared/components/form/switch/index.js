@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
-import { FormField } from 'react-form';
 import FormErrorMessage from '../error-message';
 import withStyles from '../../../utils/styles/withStyles';
 import styles from './styles';
@@ -12,47 +11,42 @@ import styles from './styles';
 class SwitchComponent extends Component {
   render() {
     const {
- classes, className, label, onInput, fieldApi,
-} = this.props;
-
-    const {
-      getValue,
-      setValue,
-      getError,
-      getWarning,
-      getSuccess,
-      setTouched,
-      getTouched,
-    } = fieldApi;
-
-    const value = getValue();
-    const error = getError();
-    const warning = getWarning();
-    const success = getSuccess();
-    const touched = getTouched();
+      classes,
+      className,
+      label,
+      input: {
+        value,
+        onChange,
+        onBlur,
+      },
+      meta: {
+        touched,
+        error,
+        warning,
+        valid,
+      },
+    } = this.props;
 
     return (
       <div
         className={classNames(classes.root, {
           [className]: className,
-        })}
-      >
+        })}>
         <FormControlLabel
           label={label}
-          control={
+          control={(
             <Switch
               checked={value}
               onChange={(event, checked) => {
-                setValue(checked);
-                setTouched();
-                if (onInput) {
-                  onInput(event);
-                }
-              }}
-            />
-          }
-        />
-        <FormErrorMessage touched={touched} error={error} warning={warning} success={success} />
+                onChange(checked);
+                onBlur(checked);
+              }} />
+          )} />
+        <FormErrorMessage
+          touched={touched}
+          error={error}
+          warning={warning}
+          success={valid} />
       </div>
     );
   }
@@ -64,20 +58,20 @@ SwitchComponent.propTypes = {
   }),
   className: PropTypes.string,
   label: PropTypes.string,
-  fieldApi: PropTypes.shape({
-    getValue: PropTypes.func,
-    getError: PropTypes.func,
-    getWarning: PropTypes.func,
-    getSuccess: PropTypes.func,
-    setValue: PropTypes.func,
-    setTouched: PropTypes.func,
+  input: PropTypes.shape({
+    value: PropTypes.any,
+    onChange: PropTypes.func,
   }),
-  onInput: PropTypes.func,
+  meta: PropTypes.shape({
+    touched: PropTypes.bool,
+    error: PropTypes.string,
+    warning: PropTypes.string,
+    valid: PropTypes.bool,
+  }),
 };
 
 export default compose(
   withStyles(styles, {
     name: 'SwitchComponent',
   }),
-  FormField,
 )(SwitchComponent);

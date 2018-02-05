@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import compose from 'recompose/compose';
-import Container from '../../../components/container';
-import withStyles from '../../../utils/styles/withStyles';
+import Container from '@components/container';
+import withStyles from '@utils/styles/withStyles';
 import PostListItem from './item';
 import styles from './styles';
 

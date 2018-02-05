@@ -4,7 +4,6 @@ import compose from 'recompose/compose';
 import classNames from 'classnames';
 import Checkbox from 'material-ui/Checkbox';
 import { FormControlLabel } from 'material-ui/Form';
-import { FormField } from 'react-form';
 import FormLabel from '../label';
 import FormErrorMessage from '../error-message';
 import styles from './styles';
@@ -16,50 +15,48 @@ class Multiselect extends Component {
     this.onChange = this.onChange.bind(this);
   }
   onChange(event, slug, checked) {
-    const { onInput, fieldApi: { getValue, setValue, setTouched } } = this.props;
-
-    const value = getValue() || [];
-
+    const { input: { onBlur, onChange, value } } = this.props;
     let valueArray;
     if (checked) {
-      valueArray = [].concat(value, slug);
+      valueArray = []
+        .concat(value, slug)
+        .filter(val => (val !== ''));
     } else {
-      valueArray = value.filter(val => val !== slug);
+      valueArray = value
+        .filter(val => (val !== slug && val !== ''));
     }
     // Set value
-    setValue(valueArray);
-    setTouched();
-    if (onInput) {
-      onInput(event);
-    }
+    onChange(valueArray);
+    onBlur(valueArray);
   }
   render() {
     const {
- classes, className, label, options, grid, fieldApi,
-} = this.props;
-
-    const {
- getValue, getError, getWarning, getSuccess, getTouched,
-} = fieldApi;
-
-    const value = getValue();
-    const error = getError();
-    const warning = getWarning();
-    const success = getSuccess();
-    const touched = getTouched();
+     classes,
+     className,
+     label,
+     options,
+     grid,
+     input: {
+       value,
+     },
+     meta: {
+       touched,
+       error,
+       warning,
+       valid,
+     },
+    } = this.props;
 
     return (
       <div
         className={classNames(classes.root, {
           [className]: className,
-        })}
-      >
+        })}>
         <FormLabel label={label} />
         <div
           className={classNames(classes.optionsWrapper, {
             [classes.grid]: grid,
-          })}
-        >
+          })}>
           {options &&
             options.length &&
             options.map((option, key) => (
@@ -69,17 +66,20 @@ class Multiselect extends Component {
                 })}
                 key={key}
                 label={option.name}
-                control={
+                control={(
                   <Checkbox
                     className={classes.checkbox}
-                    onChange={(event, checked) => this.onChange(event, option.id, checked)}
-                    checked={value && !!value.length && value.includes(option.id)}
-                  />
-                }
+                    onChange={(event, checked) => this.onChange(event, option.value, checked)}
+                    checked={value && !!value.length && value.includes(option.value)} />
+                )}
               />
             ))}
         </div>
-        <FormErrorMessage touched={touched} error={error} warning={warning} success={success} />
+        <FormErrorMessage
+          touched={touched}
+          error={error}
+          warning={warning}
+          success={valid} />
       </div>
     );
   }
@@ -95,24 +95,23 @@ Multiselect.propTypes = {
     PropTypes.shape({
       name: PropTypes.string,
       value: PropTypes.string,
-      id: PropTypes.string,
     }),
   ),
   grid: PropTypes.bool,
-  fieldApi: PropTypes.shape({
-    getValue: PropTypes.func,
-    getError: PropTypes.func,
-    getWarning: PropTypes.func,
-    getSuccess: PropTypes.func,
-    setValue: PropTypes.func,
-    setTouched: PropTypes.func,
+  input: PropTypes.shape({
+    value: PropTypes.any,
+    onChange: PropTypes.func,
   }),
-  onInput: PropTypes.func,
+  meta: PropTypes.shape({
+    touched: PropTypes.bool,
+    error: PropTypes.string,
+    warning: PropTypes.string,
+    valid: PropTypes.bool,
+  }),
 };
 
 export default compose(
   withStyles(styles, {
     name: 'Multiselect',
   }),
-  FormField,
 )(Multiselect);

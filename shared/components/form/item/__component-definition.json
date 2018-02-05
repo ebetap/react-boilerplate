@@ -1,1 +1,0 @@
-{"description":"","displayName":"FormItem","methods":[],"props":{"classes":{"type":{"name":"shape","value":{"root":{"name":"string","required":false}}},"required":false,"description":""},"className":{"type":{"name":"string"},"required":false,"description":""},"children":{"type":{"name":"union","value":[{"name":"node"},{"name":"array"}]},"required":false,"description":""}}}

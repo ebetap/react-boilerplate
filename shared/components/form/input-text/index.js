@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import classNames from 'classnames';
 import TextField from 'material-ui/TextField';
-import { FormField } from 'react-form';
 import FormLabel from '../label';
 import FormErrorMessage from '../error-message';
 import styles from './styles';
@@ -25,36 +24,24 @@ class InputText extends Component {
       classes,
       className,
       placeholder,
-      type,
-      label,
       multiline,
-      fieldApi,
-      onInput,
       autoFocus,
+      label,
+      type,
+      input,
+      meta: {
+        touched,
+        error,
+        warning,
+        valid,
+      },
     } = this.props;
-
-    const {
-      getValue,
-      getError,
-      getWarning,
-      getSuccess,
-      setValue,
-      setTouched,
-      getTouched,
-    } = fieldApi;
-
-    const value = getValue();
-    const error = getError();
-    const warning = getWarning();
-    const success = getSuccess();
-    const touched = getTouched();
 
     return (
       <div>
         <FormLabel label={label} />
         <TextField
           autoFocus={autoFocus}
-          value={value || ''}
           type={type}
           placeholder={placeholder}
           className={classNames(classes.root, {
@@ -63,16 +50,8 @@ class InputText extends Component {
           multiline={multiline}
           rows={4}
           rowsMax={6}
-          onChange={(event) => {
-            setValue(event.target.value);
-            if (onInput) {
-              onInput(event);
-            }
-          }}
           InputProps={{
-            onBlur: () => {
-              setTouched();
-            },
+            ...input,
             onKeyPress: this.handleKeyPress,
             disableUnderline: true,
             classes: {
@@ -81,9 +60,12 @@ class InputText extends Component {
                 [classes.multiline]: multiline,
               }),
             },
-          }}
-        />
-        <FormErrorMessage touched={touched} error={error} warning={warning} success={success} />
+          }} />
+        <FormErrorMessage
+          touched={touched}
+          error={error}
+          warning={warning}
+          success={valid} />
       </div>
     );
   }
@@ -100,20 +82,20 @@ InputText.propTypes = {
   onEnter: PropTypes.func,
   multiline: PropTypes.bool,
   autoFocus: PropTypes.bool,
-  fieldApi: PropTypes.shape({
-    getValue: PropTypes.func,
-    getError: PropTypes.func,
-    getWarning: PropTypes.func,
-    getSuccess: PropTypes.func,
-    setValue: PropTypes.func,
-    setTouched: PropTypes.func,
+  input: PropTypes.shape({
+    value: PropTypes.string,
+    onChange: PropTypes.func,
   }),
-  onInput: PropTypes.func,
+  meta: PropTypes.shape({
+    touched: PropTypes.bool,
+    error: PropTypes.string,
+    warning: PropTypes.string,
+    valid: PropTypes.bool,
+  }),
 };
 
 export default compose(
   withStyles(styles, {
     name: 'InputText',
   }),
-  FormField,
 )(InputText);

@@ -178,6 +178,11 @@ export default function webpackConfigFactory(buildOptions) {
       // @see https://github.com/peerigon/modernizr-loader
       alias: {
         modernizr$: path.resolve(appRootDir.get(), './.modernizrrc'),
+        '@components': path.resolve(appRootDir.get(), 'shared', 'components'),
+        '@pages': path.resolve(appRootDir.get(), 'shared', 'pages'),
+        '@reducers': path.resolve(appRootDir.get(), 'shared', 'redux'),
+        '@svgs': path.resolve(appRootDir.get(), 'shared', 'svgs'),
+        '@utils': path.resolve(appRootDir.get(), 'shared', 'utils'),
       },
     },
 

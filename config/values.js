@@ -76,8 +76,8 @@ const values = {
   // We make use of react-helmet to consume the values below.
   // @see https://github.com/nfl/react-helmet
   htmlPage: {
-    titleTemplate: 'Orion Server Side Starter - %s',
-    defaultTitle: 'Orion Server Side Starter',
+    titleTemplate: 'React Server Side Starter - %s',
+    defaultTitle: 'React Server Side Starter',
     description:
       'A starter kit giving you the minimum requirements for a production ready universal react application.',
   },

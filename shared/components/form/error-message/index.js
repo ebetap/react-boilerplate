@@ -8,8 +8,13 @@ import withStyles from '../../../utils/styles/withStyles';
 class FormErrorMessage extends Component {
   render() {
     const {
- classes, className, error, warning, success, touched,
-} = this.props;
+     classes,
+     className,
+     error,
+     warning,
+     success,
+     touched,
+    } = this.props;
 
     if (!touched) return null;
 
@@ -20,8 +25,7 @@ class FormErrorMessage extends Component {
           [classes.error]: error,
           [classes.warning]: !error && warning,
           [classes.success]: !error && !warning && success,
-        })}
-      >
+        })}>
         {error}
         {!error && warning}
         {!error && !warning && success}
@@ -37,7 +41,7 @@ FormErrorMessage.propTypes = {
   className: PropTypes.string,
   error: PropTypes.string,
   warning: PropTypes.string,
-  success: PropTypes.string,
+  success: PropTypes.bool,
   touched: PropTypes.bool,
 };
 

@@ -14,50 +14,38 @@ import styles from './styles';
 class SelectForm extends React.Component {
   render() {
     const {
- classes, className, label, options, fieldApi, onInput,
-} = this.props;
-
-    const {
-      getValue,
-      getError,
-      getWarning,
-      getSuccess,
-      setValue,
-      setTouched,
-      getTouched,
-    } = fieldApi;
-
-    const value = getValue();
-    const error = getError();
-    const warning = getWarning();
-    const success = getSuccess();
-    const touched = getTouched();
+      classes,
+      className,
+      label,
+      options,
+      input,
+      meta: {
+        touched,
+        error,
+        warning,
+        valid,
+      },
+   } = this.props;
 
     return (
       <div
         className={classNames(classes.root, {
           [className]: className,
-        })}
-      >
+        })}>
         <FormLabel label={label} />
         <Select
           autoWidth
-          value={value || (options && options.length && options[0].value)}
+          value={input.value}
           onChange={(event) => {
-            setValue(event.target.value);
-            if (onInput) {
-              onInput(event);
-            }
+            input.onChange(event);
           }}
           displayEmpty
-          onClose={setTouched}
           input={<Input className={classes.inputRoot} />}
           classes={{
             root: classes.selectRoot,
             select: classes.selectRoot,
             selectMenu: classes.selectMenu,
-          }}
-        >
+          }}>
           {options &&
             !!options.length &&
             options.map((option, key) => (
@@ -66,7 +54,11 @@ class SelectForm extends React.Component {
               </MenuItem>
             ))}
         </Select>
-        <FormErrorMessage touched={touched} error={error} warning={warning} success={success} />
+        <FormErrorMessage
+          touched={touched}
+          error={error}
+          warning={warning}
+          success={valid} />
       </div>
     );
   }
@@ -84,20 +76,20 @@ SelectForm.propTypes = {
       value: PropTypes.string,
     }),
   ).isRequired,
-  fieldApi: PropTypes.shape({
-    getValue: PropTypes.func,
-    getError: PropTypes.func,
-    getWarning: PropTypes.func,
-    getSuccess: PropTypes.func,
-    setValue: PropTypes.func,
-    setTouched: PropTypes.func,
+  input: PropTypes.shape({
+    value: PropTypes.string,
+    onChange: PropTypes.func,
   }),
-  onInput: PropTypes.func,
+  meta: PropTypes.shape({
+    touched: PropTypes.bool,
+    error: PropTypes.string,
+    warning: PropTypes.string,
+    valid: PropTypes.bool,
+  }),
 };
 
 export default compose(
   withStyles(styles, {
     name: 'Select',
   }),
-  FormField,
 )(SelectForm);
