@@ -2,7 +2,7 @@ const styles = theme => ({
   root: {},
   heading: {
     fontSize: theme.utils.toRem(16),
-    fontWeight: '600',
+    fontWeight: '500',
     marginBottom: theme.utils.toRem(10),
   },
   ul: {

@@ -1,6 +1,13 @@
 const styles = theme => ({
   root: {
-    marginBottom: theme.typography.pxToRem(20),
+    marginBottom: theme.typography.pxToRem(12),
+    marginTop: theme.typography.pxToRem(12),
+    '&:first-child': {
+      marginTop: 0,
+    },
+    '&:last-child': {
+      marginBottom: 0,
+    },
   },
   columnSplit: {
     display: 'flex',

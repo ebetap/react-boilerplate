@@ -1,9 +1,9 @@
 const styles = theme => ({
   root: {
     boxShadow: 'none',
-    borderRadius: theme.typography.pxToRem(20),
+    borderRadius: theme.typography.pxToRem(3),
     textTransform: 'none',
-    fontWeight: 600,
+    fontWeight: 500,
     paddingLeft: theme.typography.pxToRem(15),
     paddingRight: theme.typography.pxToRem(15),
     paddingTop: theme.typography.pxToRem(6),

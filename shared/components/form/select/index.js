@@ -4,7 +4,6 @@ import compose from 'recompose/compose';
 import classNames from 'classnames';
 import Input from 'material-ui/Input';
 import Select from 'material-ui/Select';
-import { FormField } from 'react-form';
 import { MenuItem } from 'material-ui/Menu';
 import withStyles from '../../../utils/styles/withStyles';
 import FormLabel from '../label';

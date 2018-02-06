@@ -6,6 +6,7 @@ const styles = theme => ({
     borderBottom: theme.utils.toRem('1px solid #eaecef'),
     borderRadius: '0',
     boxShadow: theme.utils.toRem('0 0 4px rgba(0,0,0,0.05)'),
+    backgroundColor: '#fff',
   },
   logoImage: {
     display: 'inline-block',
@@ -20,7 +21,7 @@ const styles = theme => ({
   },
   navbarMenu: {
     padding: theme.utils.toRem(0, 20),
-    fontWeight: '600',
+    fontWeight: '500',
   },
   leftside: {
     display: 'flex',
@@ -32,7 +33,7 @@ const styles = theme => ({
   profileImage: {
     display: 'flex',
     alignItems: 'center',
-    fontWeight: '600',
+    fontWeight: '500',
     padding: theme.utils.toRem(4, 15),
     paddingRight: '0',
     border: '0',
@@ -57,7 +58,7 @@ const styles = theme => ({
     borderRadius: theme.utils.toRem(40),
     padding: theme.utils.toRem(9, 15),
     lineHeight: '1',
-    fontWeight: '600',
+    fontWeight: '500',
     cursor: 'pointer',
     color: '#333',
   },

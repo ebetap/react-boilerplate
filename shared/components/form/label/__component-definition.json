@@ -1,1 +1,0 @@
-{"description":"","displayName":"FormLabel","methods":[],"props":{"classes":{"type":{"name":"shape","value":{"root":{"name":"string","required":false}}},"required":false,"description":""},"className":{"type":{"name":"string"},"required":false,"description":""},"label":{"type":{"name":"string"},"required":false,"description":""}}}

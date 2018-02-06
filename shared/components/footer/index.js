@@ -19,7 +19,7 @@ function Footer({ className, classes }) {
           <div className={classes.grid}>
             <div className={classes.logo}>
               <a href="/">
-                <GithubLogoText />
+                <GithubLogoText fill="#fff" />
               </a>
             </div>
             <div className={classes.copyright}>© 2017</div>

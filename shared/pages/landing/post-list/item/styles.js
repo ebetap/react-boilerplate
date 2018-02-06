@@ -4,6 +4,7 @@ const styles = theme => ({
     height: '100%',
     padding: theme.utils.toRem(15),
     borderRadius: theme.utils.toRem(3),
+    backgroundColor: '#fff',
     display: 'block',
     color: 'inherit',
     transition: 'transform 0.3s, box-shadow 0.3s',
@@ -20,7 +21,7 @@ const styles = theme => ({
   },
   name: {
     color: '#333',
-    fontWeight: '600',
+    fontWeight: '500',
   },
   description: {
     margin: '0',

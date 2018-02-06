@@ -9,6 +9,7 @@ import InputText from '@components/form/input-text';
 import Select from '@components/form/select';
 import Multiselect from '@components/form/multiselect';
 import Switch from '@components/form/switch';
+import RichEditor from '@components/form/rich-editor';
 import styles from './styles';
 
 const validate = (values) => {
@@ -45,6 +46,13 @@ function FormSample({
            name="switch"
            component={Switch}
            label="Swutch" />
+       </FormItem>
+       <FormItem>
+         <Field
+           name="editor"
+           component={RichEditor}
+           label="Editor"
+           sublabel="(Optional)" />
        </FormItem>
        <FormItem>
          <Field

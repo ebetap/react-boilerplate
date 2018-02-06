@@ -6,11 +6,16 @@ import styles from './styles';
 import withStyles from '../../utils/styles/withStyles';
 
 function Container({
- children, className, wide, classes,
+  children,
+  className,
+  wide,
+  narrow,
+  classes,
 }) {
   const containerClass = classNames(classes.root, {
     [className]: className,
     [classes.wide]: wide,
+    [classes.narrow]: narrow,
   });
   return <div className={containerClass}>{children}</div>;
 }
@@ -18,6 +23,7 @@ function Container({
 Container.propTypes = {
   className: PropTypes.string,
   wide: PropTypes.bool,
+  narrow: PropTypes.bool,
   children: PropTypes.node,
   classes: PropTypes.shape({
     root: PropTypes.string,

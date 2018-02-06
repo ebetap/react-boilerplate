@@ -6,7 +6,18 @@ const theme = createMuiTheme({
     toRem,
   },
   typography: {
-    fontFamily: '-apple-system, "BlinkMacSystemFont", "Helvetica Neue", "Segoe UI", sans-serif',
+    fontFamily: '"Roboto", sans-serif',
+  },
+  palette: {
+    primary: {
+      main: '#3d87fb',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
   },
 });
 

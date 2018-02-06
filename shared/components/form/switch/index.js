@@ -36,6 +36,9 @@ class SwitchComponent extends Component {
           label={label}
           control={(
             <Switch
+              classes={{
+                default: classes.button,
+              }}
               checked={value}
               onChange={(event, checked) => {
                 onChange(checked);

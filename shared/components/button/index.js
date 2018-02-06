@@ -14,7 +14,10 @@ import withStyles from '../../utils/styles/withStyles';
 class Button extends Component {
   getProps() {
     const {
-     to, onClick, raised, disabled,
+     to,
+     onClick,
+     raised,
+     disabled,
     } = this.props;
 
     const props = {
@@ -57,7 +60,10 @@ class Button extends Component {
 
     if (icon) {
       return (
-        <IconButton disabled={disabled} className={classes.iconButton} aria-label={label}>
+        <IconButton
+          disabled={disabled}
+          className={classes.iconButton}
+          aria-label={label}>
           {icon}
         </IconButton>
       );
@@ -156,7 +162,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   raised: true,
-  color: 'default',
+  color: 'primary',
 };
 
 export default compose(

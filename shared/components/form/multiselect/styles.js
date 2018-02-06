@@ -10,7 +10,7 @@ const styles = theme => ({
     marginLeft: 0,
   },
   checkbox: {
-    height: theme.typography.pxToRem(40),
+    height: theme.typography.pxToRem(35),
     marginLeft: theme.typography.pxToRem(-14),
   },
   grid: {

@@ -9,6 +9,9 @@ const styles = theme => ({
   wide: {
     maxWidth: theme.utils.toRem(1440),
   },
+  narrow: {
+    maxWidth: theme.utils.toRem(500),
+  },
 });
 
 export default styles;

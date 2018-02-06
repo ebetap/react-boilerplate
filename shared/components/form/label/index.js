@@ -7,17 +7,21 @@ import withStyles from '../../../utils/styles/withStyles';
 
 class FormLabel extends Component {
   render() {
-    const { classes, className, label } = this.props;
-
+    const {
+      classes,
+      className,
+      label,
+      sublabel,
+    } = this.props;
     if (!label) return null;
-
     return (
       <div
         className={classNames(classes.root, {
           [className]: className,
-        })}
-      >
-        {label}
+        })}>
+        {label} {sublabel && (
+          <span className={classes.sublabel}>{sublabel}</span>
+        )}
       </div>
     );
   }
@@ -29,6 +33,7 @@ FormLabel.propTypes = {
   }),
   className: PropTypes.string,
   label: PropTypes.string,
+  sublabel: PropTypes.string,
 };
 
 export default compose(
