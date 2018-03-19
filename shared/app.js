@@ -1,8 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import config from '../config';
-import Header from './components/header';
-import Footer from './components/footer';
 import Routes from './routes';
 
 class App extends React.Component {
@@ -91,9 +89,7 @@ class App extends React.Component {
             {'html { box-sizing: border-box; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; } *, *::before, *::after { box-sizing: inherit; } body { background-color: #fafafa; margin: 0; padding: 0; font-family: "Roboto", sans-serif; font-size: 14px; line-height: 1.5; color: #333333; letter-spacing: .3px; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-font-smoothing: antialiased; font-smoothing: antialiased; overflow-x: hidden; } button, input, select, textarea { font: inherit; margin: 0; } a { text-decoration: none; } h1,h2,h3,h4,h5,h6 { margin-top: 0; margin-bottom: 0 } h1 { font-size: 32px; font-weight: 600 } h2 { font-size: 24px; font-weight: 600 } h3 { font-size: 20px; font-weight: 600 } h4 { font-size: 16px; font-weight: 600 } h5 { font-size: 14px; font-weight: 600 } h6 { font-size: 12px; font-weight: 600 }'}
           </style>
         </Helmet>
-        <Header />
         <Routes />
-        <Footer />
       </div>
     );
   }

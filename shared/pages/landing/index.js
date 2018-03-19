@@ -3,14 +3,13 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withJob } from 'react-jobs';
 import PropTypes from 'prop-types';
-import PortalList from './post-list/async';
 import states from './states';
 import dispatches from './dispatches';
 
 function Landing({ posts }) {
   return (
     <div className="landing">
-      <PortalList posts={posts} />
+      <h1>React Server Side Rendering</h1>
     </div>
   );
 }
