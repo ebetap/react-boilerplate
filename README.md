@@ -13,9 +13,10 @@
 ## Commands
 - Run development: `npm run develop`
 - Build: `npm run build`
+- Test: `npm run test`
 
 ## To do
-- Testing environment setup
+- Unit test example
 
 ### FAQ
 
@@ -31,6 +32,9 @@ Example on `/shared/pages/landing/index.js`
     },
   }),
 ```
+
+### Testing
+Unit testing used here is using Jest.
 
 ### Styling?
 Styling on this project will use `JSS` instead of `CSS`. More information about it can be found on https://github.com/cssinjs/jss
